@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="xz" />
+        <module name="commons-io (1)" />
+        <module name="spring-aspects" />
+        <module name="annotations" />
+        <module name="postgresql (1) (org.testcontainers)" />
+        <module name="classmate" />
+        <module name="spring-jcl" />
+        <module name="commons-io" />
+        <module name="spring-web" />
+        <module name="micrometer-core" />
+        <module name="jul-to-slf4j.module-compile" />
+        <module name="byte-buddy-agent" />
+        <module name="spring-webmvc" />
+        <module name="jdependency" />
+        <module name="jakarta.transaction-api" />
+        <module name="spring-expression" />
+        <module name="jdom2" />
+        <module name="aspectjweaver" />
+        <module name="micrometer-commons" />
+        <module name="hamcrest-core" />
+        <module name="xmlunit-core" />
+        <module name="LatencyUtils" />
+        <module name="jakarta.activation-api" />
+        <module name="jakarta.validation-api" />
+        <module name="micrometer-observation" />
+        <module name="json-smart" />
+        <module name="spring-context" />
+        <module name="jakarta.inject-api" />
+        <module name="database-commons" />
+        <module name="spring-orm" />
+        <module name="spring-jdbc" />
+        <module name="kitaplik-api" />
+        <module name="apiguardian-api" />
+        <module name="mockito-core" />
+        <module name="jakarta.persistence-api" />
+        <module name="antlr4-runtime (1)" />
+        <module name="javax.inject" />
+        <module name="antlr4-runtime" />
+        <module name="jakarta.annotation-api" />
+        <module name="spring-test" />
+        <module name="assertj-core" />
+        <module name="awaitility" />
+        <module name="commons-codec (2)" />
+        <module name="jdbc" />
+        <module name="slf4j-api" />
+        <module name="spring-core" />
+        <module name="commons-codec" />
+        <module name="micrometer-jakarta9" />
+        <module name="postgresql" />
+        <module name="opentest4j" />
+        <module name="mockito-junit-jupiter" />
+        <module name="spring-aop" />
+        <module name="accessors-smart" />
+        <module name="spring-beans" />
+        <module name="junit" />
+        <module name="testcontainers" />
+        <module name="HdrHistogram" />
+        <module name="commons-codec (1)" />
+        <module name="jsonassert" />
+        <module name="slf4j-api (1).module-compile" />
+        <module name="objenesis" />
+        <module name="spring-tx" />
+        <module name="byte-buddy" />
+        <module name="hamcrest" />
+        <module name="junit-jupiter" />
+        <module name="HikariCP" />
+      </profile>
+      <profile name="Annotation profile for flyway-database-postgresql" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar" />
+        </processorPath>
+        <module name="flyway-database-postgresql" />
+        <module name="flyway-core" />
+      </profile>
+      <profile name="Annotation profile for Jandex: Core" enabled="true">
+        <sourceOutputDir name="../generated-sources/annotations" />
+        <sourceTestOutputDir name="../generated-test-sources/test-annotations" />
+        <option name="org.jboss.logging.tools.addGeneratedAnnotation" value="false" />
+        <module name="jandex.test" />
+        <module name="jandex.main" />
+      </profile>
+      <profile name="Annotation profile for SnakeYAML" enabled="true">
+        <sourceOutputDir name="../generated-sources/annotations" />
+        <sourceTestOutputDir name="../generated-test-sources/test-annotations" />
+        <module name="slf4j-api (1).test" />
+        <module name="snakeyaml.test" />
+        <module name="slf4j-api (1).main" />
+        <module name="jul-to-slf4j.test" />
+        <module name="snakeyaml.main" />
+        <module name="jul-to-slf4j.main" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="byte-buddy" options="-Xlint:all,-options,-processing" />
+      <module name="byte-buddy-agent" options="-Xlint:all,-options,-processing" />
+      <module name="jakarta.activation-api" options="-Xlint:all" />
+      <module name="jakarta.annotation-api" options="-Xlint:all" />
+      <module name="jakarta.inject-api" options="-Xlint:all" />
+      <module name="jakarta.persistence-api" options="-Xlint:all" />
+      <module name="jakarta.transaction-api" options="-Xlint:all" />
+      <module name="jakarta.validation-api" options="-Xlint:all" />
+      <module name="jandex" options="-Aorg.jboss.logging.tools.addGeneratedAnnotation=false" />
+      <module name="jandex-parent" options="-Aorg.jboss.logging.tools.addGeneratedAnnotation=false" />
+      <module name="jandex.main" options="-Aorg.jboss.logging.tools.addGeneratedAnnotation=false" />
+      <module name="junit" options="-Xdoclint:none" />
+      <module name="kitaplik-api" options="-parameters" />
+      <module name="smallrye-build-parent" options="-Aorg.jboss.logging.tools.addGeneratedAnnotation=false" />
+    </option>
+  </component>
+</project>

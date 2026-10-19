@@ -1,0 +1,8 @@
+.env
+**/target/
+**/node_modules/
+**/dist/
+.maven-cache/
+*.log
+.DS_Store
+Thumbs.db

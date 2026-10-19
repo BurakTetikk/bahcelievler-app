@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="sonatype-nexus-snapshots" />
+      <option name="name" value="Sonatype Nexus Snapshots" />
+      <option name="url" value="https://oss.sonatype.org/content/repositories/snapshots" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="redshift" />
+      <option name="name" value="redshift" />
+      <option name="url" value="https://s3.amazonaws.com/redshift-maven-repository/release/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="flyway-community-db-support" />
+      <option name="name" value="flyway-community-db-support" />
+      <option name="url" value="https://maven.pkg.github.com/flyway/flyway-community-db-support" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="apache.snapshots" />
+      <option name="name" value="Apache Snapshot Repository" />
+      <option name="url" value="https://repository.apache.org/snapshots" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="apache.snapshots" />
+      <option name="name" value="Apache Snapshot Repository" />
+      <option name="url" value="http://repository.apache.org/snapshots" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven-central" />
+      <option name="name" value="maven-central" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="repo.gradle.org" />
+      <option name="name" value="repo.gradle.org" />
+      <option name="url" value="https://repo.gradle.org/gradle/libs-releases-local/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="ow2-snapshot" />
+      <option name="name" value="OW2 Snapshot Repository" />
+      <option name="url" value="https://repository.ow2.org/nexus/content/repositories/snapshots" />
+    </remote-repository>
+  </component>
+</project>

@@ -1,0 +1,1199 @@
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="theme-color" content="#f7f5ef"/>
+    <title>Sayfa Arası — Kitaplığım</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+        :root {
+            --paper: #f7f5ef;
+            --ink: #202722;
+            --muted: #788078;
+            --line: #e7e6df;
+            --green: #315b45;
+            --green-soft: #e8eee8;
+            --orange: #d9885c;
+            --card: #fffefa;
+            --shadow: 0 10px 30px #26392b0b
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px
+        }
+
+        button, input, select, textarea {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        .app {
+            max-width: 1440px;
+            margin: auto;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns:236px 1fr
+        }
+
+        .sidebar {
+            padding: 32px 22px;
+            border-right: 1px solid var(--line);
+            display: flex;
+            flex-direction: column;
+            gap: 36px
+        }
+
+        .brand {
+            display: flex;
+            gap: 11px;
+            align-items: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 21px;
+            font-weight: 600
+        }
+
+        .brand-icon {
+            width: 37px;
+            height: 37px;
+            background: var(--green);
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            color: white;
+            font-size: 20px
+        }
+
+        .section-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.3px;
+            color: #a0a59e;
+            font-weight: 700;
+            margin: 0 0 12px 11px
+        }
+
+        .nav {
+            display: grid;
+            gap: 5px
+        }
+
+        .nav button {
+            border: 0;
+            background: transparent;
+            color: #737a74;
+            text-align: left;
+            padding: 11px 12px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .nav button:hover, .nav button.active {
+            background: var(--green-soft);
+            color: var(--green)
+        }
+
+        .nav .count {
+            margin-left: auto;
+            font-size: 11px;
+            color: #919891
+        }
+
+        .side-note {
+            margin-top: auto;
+            background: #edf0e9;
+            padding: 18px;
+            border-radius: 14px;
+            color: #506454;
+            line-height: 1.6;
+            font-size: 12px
+        }
+
+        .side-note strong {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #304a36
+        }
+
+        main {
+            padding: 31px 48px 60px;
+            min-width: 0
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 37px
+        }
+
+        .crumb {
+            font-size: 12px;
+            color: var(--muted)
+        }
+
+        .crumb b {
+            font-weight: 600;
+            color: #39433b
+        }
+
+        .top-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center
+        }
+
+        .icon-btn {
+            width: 38px;
+            height: 38px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 11px;
+            color: #647065
+        }
+
+        .avatar {
+            width: 37px;
+            height: 37px;
+            border-radius: 50%;
+            background: #f1dacb;
+            color: #815a43;
+            display: grid;
+            place-items: center;
+            font-weight: 700
+        }
+
+        .intro {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px
+        }
+
+        .eyebrow {
+            color: var(--green);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+            font-weight: 700;
+            margin-bottom: 8px
+        }
+
+        .intro h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            line-height: 1.14;
+            margin: 0 0 8px;
+            font-weight: 600;
+            letter-spacing: -.5px
+        }
+
+        .intro p {
+            margin: 0;
+            color: var(--muted)
+        }
+
+        .primary {
+            background: var(--green);
+            color: white;
+            border: 0;
+            border-radius: 10px;
+            padding: 12px 17px;
+            font-weight: 600;
+            display: flex;
+            gap: 9px;
+            align-items: center;
+            box-shadow: 0 5px 14px #315b4520
+        }
+
+        .primary:hover {
+            background: #264a37;
+            transform: translateY(-1px)
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns:repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 30px
+        }
+
+        .stat {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 17px 18px;
+            box-shadow: var(--shadow)
+        }
+
+        .stat-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--muted);
+            font-size: 12px
+        }
+
+        .stat-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 9px;
+            background: #f0f1eb;
+            display: grid;
+            place-items: center;
+            color: var(--green);
+            font-size: 15px
+        }
+
+        .stat strong {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin: 9px 0 2px
+        }
+
+        .stat small {
+            color: #929991;
+            font-size: 11px
+        }
+
+        .toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            gap: 12px
+        }
+
+        .tabs {
+            display: flex;
+            gap: 5px;
+            overflow: auto
+        }
+
+        .tab {
+            white-space: nowrap;
+            border: 0;
+            background: transparent;
+            color: #818981;
+            padding: 9px 12px;
+            border-radius: 9px;
+            font-size: 12px
+        }
+
+        .tab.active {
+            background: #e7ece5;
+            color: var(--green);
+            font-weight: 700
+        }
+
+        .tools {
+            display: flex;
+            gap: 8px
+        }
+
+        .search {
+            position: relative
+        }
+
+        .search input {
+            height: 37px;
+            width: 205px;
+            padding: 0 12px 0 34px;
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            background: var(--card);
+            outline: none
+        }
+
+        .search input:focus {
+            border-color: #a1b4a3
+        }
+
+        .search span {
+            position: absolute;
+            left: 11px;
+            top: 9px;
+            color: #929a92
+        }
+
+        .sort {
+            height: 37px;
+            border: 1px solid var(--line);
+            background: var(--card);
+            border-radius: 9px;
+            padding: 0 11px;
+            color: #687168;
+            font-size: 12px
+        }
+
+        .shelf-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 0 13px
+        }
+
+        .shelf-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 19px;
+            margin: 0;
+            font-weight: 600
+        }
+
+        .shelf-heading span {
+            font-size: 11px;
+            color: #979e96
+        }
+
+        .books {
+            display: grid;
+            grid-template-columns:repeat(4, minmax(0, 1fr));
+            gap: 17px
+        }
+
+        .book {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 13px;
+            padding: 12px;
+            min-width: 0;
+            box-shadow: var(--shadow);
+            transition: .18s;
+            position: relative
+        }
+
+        .book:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px #26392b12
+        }
+
+        .cover {
+            height: 190px;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding: 15px;
+            color: #fff;
+            background: #556b58
+        }
+
+        .cover:before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, #0009, transparent 65%)
+        }
+
+        .cover:after {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: #ffffff33
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1
+        }
+
+        .cover-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            line-height: 1.12;
+            font-weight: 600;
+            max-width: 145px
+        }
+
+        .cover-author {
+            font-size: 10px;
+            opacity: .85;
+            margin-top: 7px
+        }
+
+        .book-menu {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            z-index: 2;
+            border: 0;
+            border-radius: 8px;
+            background: #fffE;
+            width: 30px;
+            height: 30px;
+            color: #526052;
+            font-size: 17px
+        }
+
+        .tag {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            background: #fffE;
+            color: #425b49;
+            border-radius: 5px;
+            padding: 5px 7px;
+            font-size: 9px;
+            font-weight: 700
+        }
+
+        .book-meta {
+            padding: 12px 2px 3px
+        }
+
+        .book-title {
+            font-size: 13px;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        .book-author {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        .progress-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: #818981;
+            margin-top: 12px
+        }
+
+        .progress {
+            height: 4px;
+            background: #eceee8;
+            border-radius: 5px;
+            margin-top: 6px;
+            overflow: hidden
+        }
+
+        .progress i {
+            display: block;
+            height: 100%;
+            background: #7a9a78;
+            border-radius: 5px
+        }
+
+        .book-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 11px
+        }
+
+        .rating {
+            font-size: 10px;
+            color: #bd8a49
+        }
+
+        .update {
+            border: 0;
+            background: transparent;
+            color: var(--green);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px
+        }
+
+        .empty {
+            grid-column: 1/-1;
+            border: 1px dashed #d6d9d0;
+            border-radius: 14px;
+            padding: 48px 20px;
+            text-align: center;
+            color: var(--muted)
+        }
+
+        .empty b {
+            display: block;
+            color: #39443a;
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin-bottom: 8px
+        }
+
+        .empty button {
+            margin: 15px auto 0
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: #17221c66;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 5
+        }
+
+        .overlay.open {
+            display: flex
+        }
+
+        .modal {
+            width: min(480px, 100%);
+            background: var(--card);
+            border-radius: 17px;
+            padding: 25px;
+            box-shadow: 0 25px 80px #14231c33
+        }
+
+        .modal-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px
+        }
+
+        .modal h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin: 0
+        }
+
+        .close {
+            border: 0;
+            background: #f0f0eb;
+            border-radius: 8px;
+            width: 32px;
+            height: 32px;
+            font-size: 19px;
+            color: #667066
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns:1fr 1fr;
+            gap: 13px
+        }
+
+        .field {
+            display: grid;
+            gap: 6px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        .field label {
+            font-size: 11px;
+            color: #667066;
+            font-weight: 700
+        }
+
+        .field input, .field select, .field textarea {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 10px;
+            background: white;
+            outline: none;
+            width: 100%
+        }
+
+        .field input:focus, .field select:focus {
+            border-color: #9bb19d
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 9px;
+            margin-top: 21px
+        }
+
+        .secondary {
+            background: transparent;
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            padding: 10px 14px;
+            color: #687168
+        }
+
+        .primary.small {
+            padding: 10px 15px
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 22px;
+            left: 50%;
+            transform: translate(-50%, 20px);
+            background: #283b2e;
+            color: white;
+            padding: 12px 17px;
+            border-radius: 10px;
+            opacity: 0;
+            transition: .2s;
+            z-index: 10;
+            pointer-events: none
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translate(-50%, 0)
+        }
+
+        @media (max-width: 1050px) {
+            main {
+                padding: 28px 30px
+            }
+
+            .books {
+                grid-template-columns:repeat(3, minmax(0, 1fr))
+            }
+
+            .cover {
+                height: 175px
+            }
+
+            .sidebar {
+                width: 205px
+            }
+
+            .app {
+                grid-template-columns:205px 1fr
+            }
+        }
+
+        @media (max-width: 760px) {
+            .app {
+                display: block
+            }
+
+            .sidebar {
+                display: none
+            }
+
+            main {
+                padding: 20px 18px 40px
+            }
+
+            .topbar {
+                margin-bottom: 27px
+            }
+
+            .intro {
+                align-items: flex-start;
+                gap: 15px;
+                flex-direction: column
+            }
+
+            .intro h1 {
+                font-size: 31px
+            }
+
+            .primary {
+                padding: 11px 14px
+            }
+
+            .stats {
+                grid-template-columns:repeat(2, 1fr);
+                gap: 9px
+            }
+
+            .stat {
+                padding: 13px
+            }
+
+            .stat strong {
+                font-size: 24px
+            }
+
+            .toolbar {
+                align-items: flex-start;
+                flex-direction: column
+            }
+
+            .tools {
+                width: 100%
+            }
+
+            .search {
+                flex: 1
+            }
+
+            .search input {
+                width: 100%
+            }
+
+            .books {
+                grid-template-columns:repeat(2, minmax(0, 1fr));
+                gap: 11px
+            }
+
+            .cover {
+                height: 160px
+            }
+
+            .cover-title {
+                font-size: 17px
+            }
+
+            .book {
+                padding: 9px
+            }
+
+            .book-title {
+                font-size: 12px
+            }
+
+            .top-actions .icon-btn {
+                display: none
+            }
+        }
+
+        @media (max-width: 390px) {
+            main {
+                padding-inline: 13px
+            }
+
+            .cover {
+                height: 140px
+            }
+
+            .cover-title {
+                font-size: 15px
+            }
+
+            .tabs {
+                max-width: 100%
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">⌑</div>
+            sayfa arası
+        </div>
+        <div><p class="section-label">Kitaplığım</p>
+            <nav class="nav" id="sideNav">
+                <button class="active" data-filter="all"><span>▦</span> Tüm kitaplar <span class="count"
+                                                                                           id="allCount">0</span>
+                </button>
+                <button data-filter="reading"><span>◷</span> Şu an okuyorum <span class="count"
+                                                                                  id="readingCount">0</span></button>
+                <button data-filter="want"><span>♡</span> Okuma listem <span class="count" id="wantCount">0</span>
+                </button>
+                <button data-filter="finished"><span>✓</span> Bitirdiklerim <span class="count"
+                                                                                  id="finishedCount">0</span></button>
+            </nav>
+        </div>
+        <div class="side-note"><strong>Her kitap bir yolculuk.</strong>Bugün birkaç sayfa bile okusan, kendine güzel bir
+            alan açmış olursun. ✦
+        </div>
+    </aside>
+    <main>
+        <header class="topbar">
+            <div class="crumb">Kitaplığım <span> / </span> <b>Genel bakış</b></div>
+            <div class="top-actions">
+                <button class="icon-btn" id="exportBtn" title="Kitaplığını dışa aktar">⇩</button>
+                <div class="avatar">B</div>
+            </div>
+        </header>
+        <section class="intro">
+            <div>
+                <div class="eyebrow">Küçük bir mola, yeni bir dünya</div>
+                <h1>Kitaplığın, senin hikâyen.</h1>
+                <p>Okuduklarını takip et, sıradaki maceranı seç.</p></div>
+            <button class="primary" id="addBtn"><span>＋</span> Kitap ekle</button>
+        </section>
+        <section class="stats">
+            <div class="stat">
+                <div class="stat-top">Toplam kitap <span class="stat-icon">▤</span></div>
+                <strong id="totalStat">0</strong><small>kişisel kitaplığında</small></div>
+            <div class="stat">
+                <div class="stat-top">Okunuyor <span class="stat-icon">◷</span></div>
+                <strong id="readingStat">0</strong><small>şu anki yolculuğun</small></div>
+            <div class="stat">
+                <div class="stat-top">Tamamlandı <span class="stat-icon">✓</span></div>
+                <strong id="finishedStat">0</strong><small>bu kitapları bitirdin</small></div>
+            <div class="stat">
+                <div class="stat-top">Bu yıl <span class="stat-icon">✦</span></div>
+                <strong id="yearStat">0</strong><small>kitap tamamlandı</small></div>
+        </section>
+        <section>
+            <div class="toolbar">
+                <div class="tabs" id="tabs">
+                    <button class="tab active" data-filter="all">Tümü</button>
+                    <button class="tab" data-filter="reading">Okuyorum</button>
+                    <button class="tab" data-filter="want">Okuma listem</button>
+                    <button class="tab" data-filter="finished">Bitirdim</button>
+                </div>
+                <div class="tools"><label class="search"><span>⌕</span><input id="search" type="search"
+                                                                              placeholder="Kitap veya yazar ara"/></label><select
+                        class="sort" id="sort">
+                    <option value="recent">Son eklenen</option>
+                    <option value="title">Kitap adına göre</option>
+                    <option value="progress">İlerlemeye göre</option>
+                </select></div>
+            </div>
+            <div class="shelf-heading"><h2 id="shelfTitle">Rafındaki kitaplar</h2><span id="resultCount">0 kitap</span>
+            </div>
+            <div class="books" id="books"></div>
+        </section>
+    </main>
+</div>
+<div class="overlay" id="overlay">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-head"><h2 id="modalTitle">Kitap ekle</h2>
+            <button class="close" id="closeModal" aria-label="Kapat">×</button>
+        </div>
+        <form id="bookForm">
+            <div class="form-grid">
+                <div class="field full"><label for="title">Kitap adı *</label><input id="title" name="title" required
+                                                                                     maxlength="100"
+                                                                                     placeholder="Örn. Küçük Prens"/>
+                </div>
+                <div class="field full"><label for="author">Yazar</label><input id="author" name="author" maxlength="80"
+                                                                                placeholder="Yazarın adı"/></div>
+                <div class="field"><label for="status">Durum</label><select id="status" name="status">
+                    <option value="want">Okuma listemde</option>
+                    <option value="reading">Şu an okuyorum</option>
+                    <option value="finished">Bitirdim</option>
+                </select></div>
+                <div class="field"><label for="pages">Toplam sayfa</label><input id="pages" name="pages" type="number"
+                                                                                 min="1" max="50000" placeholder="240"/>
+                </div>
+                <div class="field"><label for="currentPage">Okuduğum sayfa</label><input id="currentPage"
+                                                                                         name="currentPage"
+                                                                                         type="number" min="0"
+                                                                                         placeholder="0"/></div>
+                <div class="field"><label for="color">Kapak rengi</label><select id="color" name="color">
+                    <option value="#556b58">Orman yeşili</option>
+                    <option value="#9c624d">Kiremit</option>
+                    <option value="#526779">Gece mavisi</option>
+                    <option value="#967d48">Hardal</option>
+                    <option value="#795d74">Erik</option>
+                    <option value="#69756d">Adaçayı</option>
+                </select></div>
+                <div class="field full"><label for="rating">Puan (isteğe bağlı)</label><select id="rating"
+                                                                                               name="rating">
+                    <option value="">Henüz puan vermedim</option>
+                    <option value="5">★★★★★ — Bayıldım</option>
+                    <option value="4">★★★★☆ — Çok güzeldi</option>
+                    <option value="3">★★★☆☆ — Güzeldi</option>
+                    <option value="2">★★☆☆☆ — Bana göre değildi</option>
+                    <option value="1">★☆☆☆☆ — Beğenmedim</option>
+                </select></div>
+            </div>
+            <div class="modal-actions">
+                <button class="secondary" type="button" id="cancelBtn">Vazgeç</button>
+                <button class="primary small" type="submit" id="saveBtn">Kitabı kaydet</button>
+            </div>
+        </form>
+    </section>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+    (() => {
+        const KEY = 'sayfa-arasi-books-v1';
+        const sample = [
+            {
+                id: 's1',
+                title: 'Bir Kış Gecesi Eğer Bir Yolcu',
+                author: 'Italo Calvino',
+                status: 'reading',
+                pages: 260,
+                currentPage: 146,
+                color: '#536c58',
+                rating: '',
+                added: 1
+            },
+            {
+                id: 's2',
+                title: 'Kürk Mantolu Madonna',
+                author: 'Sabahattin Ali',
+                status: 'finished',
+                pages: 160,
+                currentPage: 160,
+                color: '#a2604c',
+                rating: '5',
+                added: 2,
+                finishedAt: new Date().toISOString()
+            },
+            {
+                id: 's3',
+                title: 'İnsan Neyle Yaşar?',
+                author: 'Lev Tolstoy',
+                status: 'want',
+                pages: 120,
+                currentPage: 0,
+                color: '#687d91',
+                rating: '',
+                added: 3
+            },
+            {
+                id: 's4',
+                title: 'Piranesi',
+                author: 'Susanna Clarke',
+                status: 'reading',
+                pages: 272,
+                currentPage: 83,
+                color: '#9a8149',
+                rating: '',
+                added: 4
+            },
+            {
+                id: 's5',
+                title: 'Yalnızız',
+                author: 'Peyami Safa',
+                status: 'want',
+                pages: 432,
+                currentPage: 0,
+                color: '#7b6478',
+                rating: '',
+                added: 5
+            },
+            {
+                id: 's6',
+                title: 'Koku',
+                author: 'Patrick Süskind',
+                status: 'finished',
+                pages: 267,
+                currentPage: 267,
+                color: '#626a54',
+                rating: '4',
+                added: 6,
+                finishedAt: new Date().toISOString()
+            }
+        ];
+        let books;
+        try {
+            books = JSON.parse(localStorage.getItem(KEY));
+        } catch {
+            books = null;
+        }
+        if (!Array.isArray(books)) {
+            books = sample;
+            save();
+        }
+        let filter = 'all', query = '', editing = null;
+        const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+        const statusName = {reading: 'Okuyorum', want: 'Listemde', finished: 'Tamamlandı'};
+
+        function save() {
+            localStorage.setItem(KEY, JSON.stringify(books));
+        }
+
+        function esc(s = '') {
+            return String(s).replace(/[&<>"']/g, c => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[c]));
+        }
+
+        function toast(msg) {
+            const t = $('#toast');
+            t.textContent = msg;
+            t.classList.add('show');
+            clearTimeout(toast.timer);
+            toast.timer = setTimeout(() => t.classList.remove('show'), 2300);
+        }
+
+        function render() {
+            const n = {
+                all: books.length,
+                reading: books.filter(b => b.status === 'reading').length,
+                want: books.filter(b => b.status === 'want').length,
+                finished: books.filter(b => b.status === 'finished').length
+            };
+            $('#allCount').textContent = n.all;
+            $('#readingCount').textContent = n.reading;
+            $('#wantCount').textContent = n.want;
+            $('#finishedCount').textContent = n.finished;
+            $('#totalStat').textContent = n.all;
+            $('#readingStat').textContent = n.reading;
+            $('#finishedStat').textContent = n.finished;
+            const year = new Date().getFullYear();
+            $('#yearStat').textContent = books.filter(b => b.status === 'finished' && b.finishedAt && new Date(b.finishedAt).getFullYear() === year).length;
+            const labels = {
+                all: 'Rafındaki kitaplar',
+                reading: 'Şu an okudukların',
+                want: 'Okuma listen',
+                finished: 'Bitirdiğin kitaplar'
+            };
+            $('#shelfTitle').textContent = labels[filter];
+            let list = books.filter(b => (filter === 'all' || b.status === filter) && (!query || (b.title + ' ' + b.author).toLocaleLowerCase('tr').includes(query.toLocaleLowerCase('tr'))));
+            if ($('#sort').value === 'title') list.sort((a, b) => a.title.localeCompare(b.title, 'tr'));
+            else if ($('#sort').value === 'progress') list.sort((a, b) => progress(b) - progress(a)); else list.sort((a, b) => b.added - a.added);
+            $('#resultCount').textContent = list.length + ' kitap';
+            $('#books').innerHTML = list.length ? list.map(b => {
+                const p = progress(b), pageCount = Number(b.pages) || 0;
+                return `<article class="book"><div class="cover" style="background:${esc(b.color || '#556b58')}"><span class="tag">${statusName[b.status]}</span><button class="book-menu" data-menu="${esc(b.id)}" aria-label="Kitap işlemleri">···</button><div class="cover-content"><div class="cover-title">${esc(b.title)}</div><div class="cover-author">${esc(b.author || 'Yazarı belirtilmedi')}</div></div></div><div class="book-meta"><div class="book-title" title="${esc(b.title)}">${esc(b.title)}</div><div class="book-author">${esc(b.author || 'Yazarı belirtilmedi')}</div>${b.status === 'reading' ? `<div class="progress-row"><span>${Number(b.currentPage) || 0} / ${pageCount || '?'} sayfa</span><b>%${p}</b></div><div class="progress"><i style="width:${p}%"></i></div>` : ''}<div class="book-footer"><span class="rating">${b.rating ? '★'.repeat(Number(b.rating)) + '☆'.repeat(5 - Number(b.rating)) : b.status === 'finished' ? '✓ Tamamlandı' : ''}</span>${b.status === 'reading' ? `<button class="update" data-update="${esc(b.id)}">Sayfa güncelle ↗</button>` : ''}</div></div></article>`
+            }).join('') : `<div class="empty"><b>${query ? 'Aradığın kitap bulunamadı' : 'Rafın henüz boş'}</b>${query ? 'Farklı bir kitap adı veya yazar dene.' : 'İlk kitabını ekleyerek okuma yolculuğunu başlat.'}${!query ? '<button class="primary small" id="emptyAdd">＋ Kitap ekle</button>' : ''}</div>`;
+            $$('#tabs .tab').forEach(x => x.classList.toggle('active', x.dataset.filter === filter));
+            $$('#sideNav button').forEach(x => x.classList.toggle('active', x.dataset.filter === filter));
+            $('#emptyAdd')?.addEventListener('click', () => openModal());
+        }
+
+        function progress(b) {
+            if (b.status === 'finished') return 100;
+            const pages = Number(b.pages) || 0;
+            return pages ? Math.min(100, Math.round((Number(b.currentPage) || 0) / pages * 100)) : 0;
+        }
+
+        function setFilter(f) {
+            filter = f;
+            render();
+        }
+
+        function openModal(book = null) {
+            editing = book?.id || null;
+            $('#bookForm').reset();
+            $('#modalTitle').textContent = book ? 'Kitabı düzenle' : 'Kitap ekle';
+            $('#saveBtn').textContent = book ? 'Değişiklikleri kaydet' : 'Kitabı kaydet';
+            if (book) {
+                for (const k of ['title', 'author', 'status', 'pages', 'currentPage', 'color', 'rating']) $('#' + k).value = book[k] ?? '';
+            }
+            $('#overlay').classList.add('open');
+            setTimeout(() => $('#title').focus(), 50);
+        }
+
+        function closeModal() {
+            $('#overlay').classList.remove('open');
+            editing = null;
+        }
+
+        $('#addBtn').addEventListener('click', () => openModal());
+        $('#closeModal').addEventListener('click', closeModal);
+        $('#cancelBtn').addEventListener('click', closeModal);
+        $('#overlay').addEventListener('click', e => {
+            if (e.target === $('#overlay')) closeModal()
+        });
+        $('#bookForm').addEventListener('submit', e => {
+            e.preventDefault();
+            const fd = new FormData(e.currentTarget), id = editing, old = books.find(x => x.id === id);
+            const status = fd.get('status');
+            const item = {
+                id: id || crypto.randomUUID(),
+                title: fd.get('title').trim(),
+                author: fd.get('author').trim(),
+                status,
+                pages: Number(fd.get('pages')) || 0,
+                currentPage: Number(fd.get('currentPage')) || 0,
+                color: fd.get('color'),
+                rating: fd.get('rating'),
+                added: old?.added || Date.now(),
+                finishedAt: status === 'finished' ? (old?.finishedAt || new Date().toISOString()) : ''
+            };
+            if (item.pages && item.currentPage > item.pages) item.currentPage = item.pages;
+            if (status === 'finished' && item.pages) item.currentPage = item.pages;
+            if (old) books = books.map(b => b.id === id ? item : b); else books.push(item);
+            save();
+            closeModal();
+            render();
+            toast(old ? 'Kitap bilgileri güncellendi' : 'Kitap kitaplığına eklendi');
+        });
+        $('#tabs').addEventListener('click', e => {
+            const b = e.target.closest('[data-filter]');
+            if (b) setFilter(b.dataset.filter)
+        });
+        $('#sideNav').addEventListener('click', e => {
+            const b = e.target.closest('[data-filter]');
+            if (b) setFilter(b.dataset.filter)
+        });
+        $('#search').addEventListener('input', e => {
+            query = e.target.value;
+            render()
+        });
+        $('#sort').addEventListener('change', render);
+        $('#books').addEventListener('click', e => {
+            const menu = e.target.closest('[data-menu]');
+            if (menu) {
+                const b = books.find(x => x.id === menu.dataset.menu);
+                const action = prompt(`“${b.title}” için işlem yaz:\n1 — Düzenle\n2 — Sil\n3 — Durum değiştir`);
+                if (action === '1') openModal(b); else if (action === '2' && confirm('Bu kitap kitaplığından silinsin mi?')) {
+                    books = books.filter(x => x.id !== b.id);
+                    save();
+                    render();
+                    toast('Kitap silindi')
+                } else if (action === '3') {
+                    const next = b.status === 'want' ? 'reading' : b.status === 'reading' ? 'finished' : 'want';
+                    b.status = next;
+                    if (next === 'finished') {
+                        b.finishedAt = new Date().toISOString();
+                        b.currentPage = b.pages || b.currentPage
+                    } else b.finishedAt = '';
+                    save();
+                    render();
+                    toast('Kitap durumu güncellendi')
+                }
+                return;
+            }
+            const up = e.target.closest('[data-update]');
+            if (up) {
+                const b = books.find(x => x.id === up.dataset.update),
+                    value = prompt(`Kaçıncı sayfadasın? (Toplam ${b.pages || 'belirtilmedi'})`, String(b.currentPage || 0));
+                if (value === null) return;
+                const page = Number(value);
+                if (!Number.isFinite(page) || page < 0) {
+                    toast('Geçerli bir sayfa numarası gir');
+                    return
+                }
+                b.currentPage = b.pages ? Math.min(page, b.pages) : page;
+                if (b.pages && b.currentPage >= b.pages) {
+                    b.status = 'finished';
+                    b.finishedAt = new Date().toISOString();
+                    toast('Tebrikler, kitabı bitirdin!')
+                } else toast('Okuma ilerlemen güncellendi');
+                save();
+                render()
+            }
+        });
+        $('#exportBtn').addEventListener('click', () => {
+            const blob = new Blob([JSON.stringify(books, null, 2)], {type: 'application/json'}),
+                url = URL.createObjectURL(blob), a = document.createElement('a');
+            a.href = url;
+            a.download = 'kitapligim.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            toast('Kitaplığın dışa aktarıldı')
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeModal();
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                $('#search').focus()
+            }
+        });
+        render();
+    })();
+</script>
+</body>
+</html>
